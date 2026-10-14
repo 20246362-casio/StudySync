@@ -5,9 +5,10 @@
         $lname = $_POST['lname'];
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
-        $insert = "INSERT INTO accounts(firstname,lastname,username,password,role) VALUES(''$fname','$lname', $username','$password','student')";
+        $insert = "INSERT INTO accounts(firstname,lastname,username,password,role) VALUES('$fname','$lname', '$username','$hashedPassword','student')";
         $result = mysqli_query($conn, $insert);
 
 

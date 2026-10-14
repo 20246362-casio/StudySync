@@ -11,6 +11,8 @@
 
 		if(mysqli_num_rows($result)<1){
 			echo "<script>alert('No accounts'); </script>";
+			echo "<script>window.location.href = 'index.php';</script>";
+			exit();
 		}
 		else{
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -18,7 +20,6 @@
 					$_SESSION["USERNAME"] = $row['username'];
 					$_SESSION["FNAME"] = $row['firstname'];
 					$_SESSION["LNAME"] = $row['lastname'];
-
 
 					header("location:admin/index.php");
 				}
@@ -31,7 +32,9 @@
 					header("location:student/index.php");
 				}
 				else{
-					header("location:index.php");
+					echo "<script>alert('Incorrect Credentials'); </script>";
+					echo "<script>window.location.href = 'index.php';</script>";
+					exit();
 				}
 			}
 		}
